@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Orange Weather</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/f31efd136e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <header>
+                <div class="logo">
+                    Orange
+                    <div>Weather</div>
+
+                    <form id="search-bar">
+                        <div class="row">
+
+                            <div class="col-2">
+                                <button class="btn btn-default search-button" id="search-button" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+
+                            <div class="col-10">
+                                <input class="search-form" id="search-input" type="search" placeholder="type your city"
+                                    autocomplete="off" />
+                            </div>
+                        </div>
+                    </form>
+
+
+            </header>
+
+            <div class="row center-info">
+                <div class="col-7">
+                    <i class="fas fa-sun main-icon"></i>
+                </div>
+                <div class="col-5 main-temperature">
+                    <span id="temperature"></span>
+                    <span class="celsius"> <a href="#" id="celsius"> °C </a> </span>
+                    <span class="fahrenheit"> <a href="#" id="fahrenheit"> | °F </a> </span>
+                    <div class="col fun-icon">
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row info-line">
+                <div class="col-6 day-time" id="update-day-time">
+                </div>
+
+                <div class="col-6 city" id="city-display">
+                    Lisbon
+                </div>
+            </div>
+
+            <footer>
+                <div class="row forecast">
+                    <div class="col-2">
+                        Today
+                        <div>
+                            20°
+                        </div>
+                        <div>
+                            <i class="fas fa-sun forecast-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        MON
+                        <div>
+                            15°
+                        </div>
+                        <div>
+                            <i class="fas fa-cloud forecast-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        TUE
+                        <div>
+                            14°
+                        </div>
+                        <div>
+                            <i class="fas fa-cloud-sun-rain forecast-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        WED
+                        <div>
+                            15°
+                        </div>
+                        <div>
+                            <i class="fas fa-cloud forecast-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        THU
+                        <div>
+                            24°
+                        </div>
+                        <div>
+                            <i class="fas fa-sun forecast-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        FRI
+                        <div>
+                            27°
+                        </div>
+                        <div>
+                            <i class="fas fa-sun forecast-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+    <script src="java.js"></script>
+</body>
+
+</html>

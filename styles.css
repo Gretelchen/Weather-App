@@ -1,0 +1,105 @@
+body {
+  margin: 100px 150px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+section {
+  max-width: 450px;
+  min-width: 320px;
+  margin: 100px auto;
+  display: block;
+  padding: 20px 30px;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  border: 50px 10px;
+  border-style: solid;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px grey;
+  color: #ffffff;
+}
+.logo {
+  font-family: "Rock Salt", cursive;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.search-form {
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+  margin: 20px 30px;
+  font-family: "Roboto Condensed", sans-serif;
+  position: relative;
+}
+
+.search-button {
+  float: left;
+  margin: 15px 40px;
+  position: relative;
+}
+
+.city {
+  text-align: right;
+}
+
+.day-time {
+  text-align: left;
+}
+
+.center-info {
+  margin: 40px;
+}
+.main-icon {
+  font-size: 110px;
+  float: right;
+  text-shadow: 10px 10px 10px grey;
+}
+
+.main-temperature {
+  font-size: 40px;
+  float: left;
+  margin: -11px;
+}
+
+.celsius {
+  font-size: 13px;
+  margin: 0;
+  transition: all 200ms ease-in-out;
+}
+
+.celsius:hover {
+  color: grey;
+}
+
+.fahrenheit {
+  font-size: 13px;
+  margin: 0;
+}
+
+.active {
+  color: #000000;
+  text-decoration: none;
+}
+
+.fun-icon {
+  padding: 0;
+}
+
+.info-line {
+  font-size: 20px;
+  border-bottom: #ffffff solid;
+  padding: 0 0 10px 0;
+}
+
+.forecast {
+  text-align: center;
+}
+
+.forecast-icon {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+footer {
+  font-size: 18px;
+  line-height: 40px;
+  padding: 10px 0 10px 0;
+}

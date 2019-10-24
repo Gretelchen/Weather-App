@@ -47,6 +47,25 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", tempFahrenheit);
 let fahrenheitFormula = Math.round((14 * 9) / 5 + 32);
 
-//Anzeige der Temperatur beim Laden der Seite
-// API Wetter je Stadt
+//Anzeige der Temperatur beim Laden der Seite, evtl. - Wie geht das? Funktion ausüben für Celcius
+//aktuelle position anzeigen, button dazu erstellen
+//API Wetter je Stadt
 //API Forecast
+//Icons wechseln lassen durch openweather API in der Mitte und im forecast
+
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(getLocationData);
+}
+
+function getLocationData(position) {
+  let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lisbon&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showPosition);
+}
+
+function showPosition(response) {
+  console.log(response);
+}
+
+getLocationData();
+getCurrentPosition();

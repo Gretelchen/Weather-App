@@ -57,15 +57,14 @@ function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(getLocationData);
 }
 
-function getLocationData(position) {
+function getLocationData(city) {
   let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lisbon&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showPosition);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
 }
 
-function showPosition(response) {
+function showTemperature(response) {
   console.log(response);
 }
 
-getLocationData();
-getCurrentPosition();
+getLocationData("Lisbon");

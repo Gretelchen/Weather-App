@@ -58,13 +58,17 @@ function getCurrentPosition() {
 }
 
 function getLocationData(city) {
+  //let latitude = data.coord.lat;
+  //let longitude = data.coord.lon;
   let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
 function showTemperature(response) {
-  console.log(response);
+  temperatureMainElement = document.querySelector("#temperature");
+  temperatureMainElement.innerHTML = Math.round(response.data.main.temp);
+  console.log(showTemperature);
 }
 
 getLocationData("Lisbon");

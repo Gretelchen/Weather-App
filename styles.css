@@ -36,6 +36,15 @@ body {
   position: relative;
 }
 
+.button-current-position {
+  font-family: "Roboto Condensed", sans-serif;
+  position: relative;
+  font-size: 10px;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+  margin: 0 auto;
+}
+
 .city {
   text-align: right;
 }

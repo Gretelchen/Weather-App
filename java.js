@@ -67,10 +67,11 @@ function getLocationData(position) {
 }
 
 function showTemperature(response) {
-  console.log(response.data);
-  temperatureMainElement = document.querySelector("#temperature");
+  let temperatureMainElement = document.querySelector("#temperature");
   temperatureMainElement.innerHTML = Math.round(response.data.main.temp);
-  console.log(showTemperature);
   let currentCity = document.querySelector("#cityPosition");
   currentCity.innerHTML = response.data.name;
 }
+
+let button = document.querySelector("#buttonCurrentPosition");
+button.addEventListener("click", getCurrentPosition);

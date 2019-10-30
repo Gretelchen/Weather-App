@@ -3,7 +3,7 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
-section {
+.weather-app {
   max-width: 450px;
   min-width: 320px;
   margin: 100px auto;
@@ -104,6 +104,7 @@ footer {
   padding: 10px 0 10px 0;
 }
 
-.footer-link {
-  font-family: "Roboto Condensed", sans-serif;
+.footer-all {
+  margin: 100px;
+  margin-top: 5px;
 }

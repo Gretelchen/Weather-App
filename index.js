@@ -1,13 +1,13 @@
-function search(event) {
-  event.preventDefault();
-  city.innerHTML = searchInput.value;
-}
+// function search(event) {
+//   event.preventDefault();
+//   city.innerHTML = searchInput.value;
+// }
 
-let searchBar = document.querySelector("#search-bar");
-let searchInput = document.querySelector("#search-input");
-let city = document.querySelector("#city-display");
+// let searchBar = document.querySelector("#search-bar");
+// let searchInput = document.querySelector("#search-input");
+// let city = document.querySelector("#city-display");
 
-searchBar.addEventListener("submit", search);
+// searchBar.addEventListener("submit", search);
 
 function getCurrentDayTime() {
   dayTime.innerHTML = `${day} ${hour}:${minute}`;
@@ -70,7 +70,7 @@ function showTemperature(response) {
   console.log(response);
   let temperatureMainElement = document.querySelector("#temperature");
   temperatureMainElement.innerHTML = Math.round(response.data.main.temp);
-  let currentCity = document.querySelector("#cityPosition");
+  let currentCity = document.querySelector("#city-display");
   currentCity.innerHTML = response.data.name;
 }
 

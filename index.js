@@ -69,9 +69,16 @@ function getLocationData(position) {
 function showTemperature(response) {
   console.log(response);
   let temperatureMainElement = document.querySelector("#temperature");
-  temperatureMainElement.innerHTML = Math.round(response.data.main.temp);
   let currentCity = document.querySelector("#city-display");
+  let iconElement = document.querySelector("#icon");
+  let iconUrl = response.data.weather[0].icon;
+
+  temperatureMainElement.innerHTML = Math.round(response.data.main.temp);
   currentCity.innerHTML = response.data.name;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconUrl}@2x.png`
+  );
 }
 
 let button = document.querySelector("#buttonCurrentPosition");
@@ -81,9 +88,15 @@ function displayWeather(event) {
   console.log(event.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city-display");
+  let iconElement = document.querySelector("#icon");
+  let iconUrl = event.data.weather[0].icon;
 
   temperatureElement.innerHTML = Math.round(event.data.main.temp);
   cityElement.innerHTML = event.data.name;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconUrl}@2x.png`
+  );
 }
 
 let cityElement = "Toronto";

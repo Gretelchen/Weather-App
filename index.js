@@ -76,3 +76,17 @@ function showTemperature(response) {
 
 let button = document.querySelector("#buttonCurrentPosition");
 button.addEventListener("click", getCurrentPosition);
+
+function displayWeather(event) {
+  console.log(event.data);
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city-display");
+
+  temperatureElement.innerHTML = Math.round(event.data.main.temp);
+  cityElement.innerHTML = event.data.name;
+}
+
+let cityElement = "Toronto";
+let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityElement}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayWeather);

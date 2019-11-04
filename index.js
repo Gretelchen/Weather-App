@@ -5,6 +5,9 @@ function getCurrentDayTime() {
 let current = new Date();
 let dayTime = document.querySelector("#update-day-time");
 let hour = current.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
 let minute = current.getMinutes();
 if (minute < 10) {
   minute = `0${minute}`;
@@ -13,6 +16,19 @@ let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 let day = days[current.getDay()];
 
 getCurrentDayTime();
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+  return `${hour}:${minute}`;
+}
 
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(getLocationData);
@@ -47,14 +63,44 @@ function displayWeather(event) {
   );
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    let forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+<div class="col-2">
+      <div>
+          ${formatHours(forecast.dt * 1000)}
+      </div>
+      <div><strong>
+          ${Math.round(forecast.main.temp)}° <strong/>
+      </div>
+      <div style="display: flex; justify-content: center;">
+      <img
+         src="http://openweathermap.org/img/wn/${
+           forecast.weather[0].icon
+         }@2x.png" alt="" style="width= 50px; height: 60px;"
+         />
+         <div/>
+      
+  </div>`;
+  }
+}
+
 function search(city) {
   let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
+
+  let apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiForecast).then(displayForecast);
 }
 
-function handleSumbmit(event) {
-  event.preventDefault();
+function handleSumbmit(submit) {
+  submit.preventDefault();
   let cityInput = document.querySelector("#city-display");
   let searchInput = document.querySelector("#search-input");
   cityInput.innerHTML = searchInput.value;
@@ -66,9 +112,9 @@ searchBar.addEventListener("submit", handleSumbmit);
 
 function displayCelcius(event) {
   event.preventDefault();
+  temperature.innerHTML = Math.round(celsiusTemperature);
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  temperature.innerHTML = Math.round(celsiusTemperature);
 }
 
 function displayFahrenheit(event) {

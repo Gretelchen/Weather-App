@@ -69,8 +69,9 @@ body {
 }
 
 .celsius {
-  font-size: 13px;
-  margin: 0;
+  position: relative;
+  font-size: 20px;
+  top: -40px;
   transition: all 200ms ease-in-out;
 }
 
@@ -79,9 +80,9 @@ body {
 }
 
 .fahrenheit {
-  font-size: 13px;
-  margin: 0px;
-  margin-top: 40px;
+  position: relative;
+  font-size: 20px;
+  top: -40px;
 }
 
 .active {

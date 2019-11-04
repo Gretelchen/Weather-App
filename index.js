@@ -14,15 +14,16 @@ let day = days[current.getDay()];
 
 getCurrentDayTime();
 
-function tempCelcius(event) {
+function displayCelcius(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  temperature.innerHTML = "14";
+  temperature.innerHTML = temperature.innerHTML;
 }
 
-function tempFahrenheit(event) {
+function displayFahrenheit(event) {
   event.preventDefault();
+  let fahrenheitFormula = Math.round((temperature.innerHTML * 9) / 5 + 32);
   fahrenheitLink.classList.add("active");
   celsiusLink.classList.remove("active");
   temperature.innerHTML = fahrenheitFormula;
@@ -30,17 +31,10 @@ function tempFahrenheit(event) {
 
 let celsiusLink = document.querySelector("#celsius");
 let temperature = document.querySelector("#temperature");
-celsiusLink.addEventListener("click", tempCelcius);
+celsiusLink.addEventListener("click", displayCelcius);
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", tempFahrenheit);
-let fahrenheitFormula = Math.round((14 * 9) / 5 + 32);
-
-//Anzeige der Temperatur beim Laden der Seite, evtl. - Wie geht das? Funktion ausüben für Celcius
-//aktuelle position anzeigen, button dazu erstellen
-//API Wetter je Stadt
-//API Forecast
-//Icons wechseln lassen durch openweather API in der Mitte und im forecast
+fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(getLocationData);
@@ -52,22 +46,7 @@ function getLocationData(position) {
   let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
-  axios.get(apiUrl).then(showTemperature);
-}
-
-function showTemperature(response) {
-  console.log(response);
-  let temperatureMainElement = document.querySelector("#temperature");
-  let currentCity = document.querySelector("#city-display");
-  let iconElement = document.querySelector("#icon");
-  let iconUrl = response.data.weather[0].icon;
-
-  temperatureMainElement.innerHTML = Math.round(response.data.main.temp);
-  currentCity.innerHTML = response.data.name;
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${iconUrl}@2x.png`
-  );
+  axios.get(apiUrl).then(displayWeather);
 }
 
 let button = document.querySelector("#buttonCurrentPosition");
@@ -102,7 +81,7 @@ function handleSumbmit(event) {
   search(searchInput.value);
 }
 
-search("Andorra");
-
 let searchBar = document.querySelector("#search-bar");
 searchBar.addEventListener("submit", handleSumbmit);
+
+search("Andorra");

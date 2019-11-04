@@ -14,28 +14,6 @@ let day = days[current.getDay()];
 
 getCurrentDayTime();
 
-function displayCelcius(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  temperature.innerHTML = temperature.innerHTML;
-}
-
-function displayFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitFormula = Math.round((temperature.innerHTML * 9) / 5 + 32);
-  fahrenheitLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  temperature.innerHTML = fahrenheitFormula;
-}
-
-let celsiusLink = document.querySelector("#celsius");
-let temperature = document.querySelector("#temperature");
-celsiusLink.addEventListener("click", displayCelcius);
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", displayFahrenheit);
-
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(getLocationData);
 }
@@ -58,6 +36,8 @@ function displayWeather(event) {
   let cityElement = document.querySelector("#city-display");
   let iconElement = document.querySelector("#icon");
   let iconUrl = event.data.weather[0].icon;
+
+  celsiusTemperature = event.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(event.data.main.temp);
   cityElement.innerHTML = event.data.name;
@@ -83,5 +63,29 @@ function handleSumbmit(event) {
 
 let searchBar = document.querySelector("#search-bar");
 searchBar.addEventListener("submit", handleSumbmit);
+
+function displayCelcius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperature.innerHTML = Math.round(celsiusTemperature);
+}
+
+function displayFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitFormula = Math.round((celsiusTemperature * 9) / 5 + 32);
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  temperature.innerHTML = fahrenheitFormula;
+}
+
+let celsiusLink = document.querySelector("#celsius");
+let temperature = document.querySelector("#temperature");
+celsiusLink.addEventListener("click", displayCelcius);
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusTemperature = null;
 
 search("Andorra");

@@ -1,14 +1,3 @@
-// function search(event) {
-//   event.preventDefault();
-//   city.innerHTML = searchInput.value;
-// }
-
-// let searchBar = document.querySelector("#search-bar");
-// let searchInput = document.querySelector("#search-input");
-// let city = document.querySelector("#city-display");
-
-// searchBar.addEventListener("submit", search);
-
 function getCurrentDayTime() {
   dayTime.innerHTML = `${day} ${hour}:${minute}`;
 }
@@ -99,7 +88,21 @@ function displayWeather(event) {
   );
 }
 
-let cityElement = "Toronto";
-let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityElement}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayWeather);
+function search(city) {
+  let apiKey = "2fed1584ca3221a55333f6e6fcb1d723";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+}
+
+function handleSumbmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-display");
+  let searchInput = document.querySelector("#search-input");
+  cityInput.innerHTML = searchInput.value;
+  search(searchInput.value);
+}
+
+search("Andorra");
+
+let searchBar = document.querySelector("#search-bar");
+searchBar.addEventListener("submit", handleSumbmit);
